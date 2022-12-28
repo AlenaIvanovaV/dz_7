@@ -17,8 +17,7 @@ def test_selene():
     browser.config.window_width = 1620
     browser.open('https://github.com/')
     browser.element('.header-search-input').click()
-    browser.element('.header-search-input').type('eroshenkoam/allure-example')
-    browser.element('.overflow-hidden').click()
+    browser.element('.header-search-input').type('eroshenkoam/allure-example').press_enter()
     browser.element(by.link_text('eroshenkoam/allure-example')).click()
     browser.element('#issues-tab').click()
     browser.element(by.partial_text('#76')).should(be.visible)
@@ -38,9 +37,7 @@ def test_gitub():
         browser.open('https://github.com/')
     with allure.step('Найти репозиторий'):
         browser.element('.header-search-input').click()
-        browser.element('.header-search-input').type('eroshenkoam/allure-example')
-        browser.element('.overflow-hidden').click()
-
+        browser.element('.header-search-input').type('eroshenkoam/allure-example').press_enter()
     with allure.step('Открыть репозиторий'):
         browser.element(by.link_text('eroshenkoam/allure-example')).click()
     with allure.step('Открыть таб issues'):
@@ -76,8 +73,8 @@ def main_page():
 @allure.step("Найти репозиторий {repo}")
 def find_repo(repo):
     browser.element('.header-search-input').click()
-    browser.element('.header-search-input').type(repo)
-    browser.element('.overflow-hidden').click()
+    browser.element('.header-search-input').type(repo).press_enter()
+
 
 
 @allure.step("Открыть {repo}")
